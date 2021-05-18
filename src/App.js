@@ -45,6 +45,12 @@ const App = () => {
       <div>
         <button onClick={() => dispatch({type: "ADD" })}>ADD</button>
       </div>
+      <div>
+        <button onClick={() => dispatch({type: "MULTIPLICATION" })}> Multiplication</button>
+      </div>
+      <div>
+        <button onClick={() => dispatch({type: "RESET" })}>Reset</button>
+      </div>
       { result && (
         <p>{result}</p>
       )}

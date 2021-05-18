@@ -32,7 +32,7 @@ const reducer = (state = stateInit, action = {} ) =>{
 
                 return {
                     ...state,
-                    message: `Pb de saisi ${value} : champ vide ou ce n'est pas un nombre`,
+                    message: `Champ vide ou c'est ne pas un nombre`,
                     [name] : ''
                     
                 }
@@ -41,7 +41,7 @@ const reducer = (state = stateInit, action = {} ) =>{
             return {
                 ...state,
                 [name] : value,
-                message: '', type: ""
+                message: ''
             }
 
         case "ADD":
@@ -50,7 +50,18 @@ const reducer = (state = stateInit, action = {} ) =>{
             return {
                 ...state,
                 number1: '', number2: '',
+                message: `le resultat de l'addition  ${state.number1} + ${state.number2}
+                ${Number(state.number1) + Number(state.number2)}`,
                 result : parseFloat(number1) + parseFloat(number2)
+            }
+
+        case "MULTIPLICATION":
+
+            return {
+                ...state,
+                number1: '', number2: '',
+                message: `le resultat de Multiplication ${state.number1} * ${state.number2}
+                ${Number(state.number1) + Number(state.number2)}`,
             }
 
         case "RESET":
