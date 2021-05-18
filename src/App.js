@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
-
 // importer le store et les actions
 
 import { useSelector, useDispatch } from 'react-redux';
+import { change, show , add, mult, reset} from './actions/actions-types';
 
 const App = () => {
 
@@ -15,7 +15,7 @@ const App = () => {
   const handleChange = e => {
     const { name, value } = e.target;
 
-    dispatch({ type: "SET_NUMBER", name, value });
+    dispatch(change({value, name}));
   }
 
   return (
@@ -25,7 +25,7 @@ const App = () => {
           { numbers.map((number, i) => <li key={i}>{number}</li>)}
         </ul>
       )}
-      <button onClick={() => dispatch({ type: "SHUFFLE" })} >Afficher les nombres</button>
+      <button onClick={() => dispatch(show())} >Afficher les nombres</button>
       {/** affichez simplement les nombres du store ul li */}
 
       <div>
@@ -40,19 +40,20 @@ const App = () => {
        <input type="text" name="number2" onChange={handleChange} value={number2} />
         {number2}
       </div>
-      <p>{message}</p>
-
       <div>
-        <button onClick={() => dispatch({type: "ADD" })}>ADD</button>
+        <button onClick={() => dispatch(add())}>ADD</button>
       </div>
       <div>
-        <button onClick={() => dispatch({type: "MULTIPLICATION" })}> Multiplication</button>
+        <button onClick={() => dispatch(mult())}>MULTIPLICATION</button>
       </div>
       <div>
-        <button onClick={() => dispatch({type: "RESET" })}>Reset</button>
+        <button onClick={() => dispatch(reset())}>RESET</button>
       </div>
       { result && (
         <p>{result}</p>
+      )}
+      { message && (
+        <p>{message}</p>
       )}
     </div>
   );
