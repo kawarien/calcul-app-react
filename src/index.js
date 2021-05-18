@@ -4,9 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import calculatrice from './reducers/calculatrice';
+import { createStore } from 'redux'; // les données et la logique métier
+import { Provider } from 'react-redux'; 
+
+const store = createStore(calculatrice);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
